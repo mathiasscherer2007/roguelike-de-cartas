@@ -7,20 +7,10 @@ class Enemy{
         this.image = image;
         this.ability = ability === "" ? "none" : ability;
     }
-
-    generateCard(){
-        return `
-            <div class="cardName">${this.name}</div>
-            <div class="cardImage" style="background-image: url(${this.image})"></div>
-            <div class="cardStats">
-                <div class="cardHealth">${this.health}</div>
-                <div class="cardAbility" style="background-image: url(${this.ability})"></div>
-                <div class="cardDamage">${this.damage}</div>
-            </div>
-        `
-    }
 }
 
 const garcia = new Enemy(1, "Hermano Pera", 3, 5, "Images/Enemies/pera.png", "");
+const goblin = new Enemy(2, "Goblin", 1, 1, "Images/Enemies/goblin.png", "");
 
-export const enemyList = [garcia];
+
+export const enemyList = [garcia, goblin];

@@ -141,7 +141,7 @@ html, body, .container{
     text-align: center;
     padding: 2px;
     border-bottom: var(--stdBorder);
-    font-size: 1.05em;
+    font-size: 1.1em;
 }
 
 .cardImage{
@@ -149,7 +149,8 @@ html, body, .container{
     grid-row: 2;
     width: 100%;
 
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
 
     /* Fucking Christ. This block of code took blood sweat and tears, but I found a (sort-of) clean way of dealing with it.
@@ -197,6 +198,7 @@ html, body, .container{
     border-left: var(--stdBorder);
 }
 
+/* Weapons */
 .cardWeapon{
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     will-change: transform;
@@ -205,6 +207,11 @@ html, body, .container{
 .cardWeapon:hover{
     transform: translate(0px, -3px);
     box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cardWeaponSelected{
+    box-shadow: 0px 0px 2px rgba(0, 255, 0, 0.5);
+    transform: translate(0px, -3px);
 }
 
 /* fr = France 🇫🇷 💪 */

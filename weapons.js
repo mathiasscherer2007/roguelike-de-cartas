@@ -6,18 +6,7 @@ class Weapon{
         this.health = health;
         this.image = image;
         this.type = type;
-    }
-
-    generateCard(){
-        return `
-            <div class="cardName">${this.name}</div>
-            <div class="cardImage" style="background-image: url(${this.image})"></div>
-            <div class="cardStats">
-                <div class="cardHealth">${this.health}</div>
-                <div class="cardAbility" style="background-image: url(${this.type})"></div>
-                <div class="cardDamage">${this.damage}</div>
-            </div>
-        `
+        this.selected = false;
     }
 }
 
