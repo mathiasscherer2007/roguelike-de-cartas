@@ -1,6 +1,6 @@
 import { enemyList } from "./enemies.js";
 import { weaponsList } from "./weapons.js";
-import { Card } from "./cards.js";
+import { Card, CardWeapon, isCardSelected} from "./cards.js";
 
 const divTOTEM = document.querySelector(".totem");
 const divBOARD = document.querySelector(".board");
@@ -16,3 +16,7 @@ divPLACEMENT.appendChild(manoJohn.element);
 let goblin = new Card(enemyList[1].name, enemyList[1].damage, enemyList[1].health, enemyList[1].image, enemyList[1].ability);
 divPLACEMENT.appendChild(goblin.element);
 
+let arma = new CardWeapon(weaponsList[0].name, weaponsList[0].damage, weaponsList[0].health, weaponsList[0].image, weaponsList[0].ability);
+divWEAPONS.appendChild(arma.element);
+let arma2 = new CardWeapon(weaponsList[0].name, weaponsList[0].damage, weaponsList[0].health, weaponsList[0].image, weaponsList[0].ability);
+divWEAPONS.appendChild(arma2.element);

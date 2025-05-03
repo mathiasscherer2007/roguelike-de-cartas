@@ -24,4 +24,28 @@ class Card{
     }
 }
 
-export {Card};
+let isCardSelected = false;
+
+class CardWeapon extends Card{
+    constructor(name, damage, health, image, type){
+        super(name, damage, health, image, type);
+        this.selected = false;
+        this.element.classList.add("cardWeapon");
+
+        this.element.addEventListener("click", () => {
+            if (this.selected){
+                this.selected = false;
+                isCardSelected = false;
+                this.element.classList.remove("cardWeaponSelected");
+            } else {
+                if (!isCardSelected){
+                    this.selected = true;
+                    isCardSelected = true;
+                    this.element.classList.add("cardWeaponSelected");
+                }
+            }
+        })
+    }
+}
+
+export {Card, CardWeapon, isCardSelected};
