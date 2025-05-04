@@ -132,6 +132,7 @@ html, body, .container{
     background-color: var(--bgColor1);
     border: var(--stdBorder);
     border-radius: 10px;
+    text-shadow: 0 0 10px var(--bgColor1);
 }
 
 .cardName{
@@ -196,6 +197,11 @@ html, body, .container{
     grid-row: 1;
 
     border-left: var(--stdBorder);
+}
+
+/*Enemy*/
+.cardEnemy{
+    transition: box-shadow 0.2s ease;
 }
 
 /* Weapons */

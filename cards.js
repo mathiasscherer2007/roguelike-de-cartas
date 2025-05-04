@@ -48,4 +48,22 @@ class CardWeapon extends Card{
     }
 }
 
-export {Card, CardWeapon, isCardSelected};
+class CardEnemy extends Card{
+    constructor(name, damage, health, image, ability){
+        super(name, damage, health, image, ability);
+        this.element.classList.add("cardEnemy");
+
+        this.element.addEventListener("mouseenter", () => {
+            if (isCardSelected) {
+                this.element.style.boxShadow = "0 0 10px rgb(255, 0, 0)";
+            }
+        })
+        this.element.addEventListener("mouseleave", () => {
+            if (isCardSelected) {
+                this.element.style.boxShadow = "";
+            }
+        })
+    }
+}
+
+export {Card, CardWeapon, CardEnemy, isCardSelected};
