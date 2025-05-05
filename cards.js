@@ -29,8 +29,9 @@ class Card{
 }
 
 class CardWeapon extends Card{
-    constructor(name, damage, health, image, type){
-        super(name, damage, health, image, type);
+    constructor(name, damage, health, image, ability, type){
+        super(name, damage, health, image, ability);
+        this.type = type;
         this.selected = false;
         this.element.classList.add("cardWeapon");
 
@@ -59,23 +60,25 @@ class CardEnemy extends Card{
         this.element.addEventListener("mouseenter", () => {
             if (isCardSelected) {
                 this.element.style.boxShadow = "0 0 10px rgb(255, 0, 0)";
+            } else {
+                this.element.style.boxShadow = "";
             }
         })
         this.element.addEventListener("mouseleave", () => {
-            if (isCardSelected) {
-                this.element.style.boxShadow = "";
-            }
+            this.element.style.boxShadow = "";
         })
         this.element.addEventListener("click", () => {
             if (isCardSelected) {
                 for (let i = 0; i < weaponsInHand.length; i++) {
-                    const element = weaponsInHand[i];
-                    if (element.selected) {
-                        this.health -= element.damage;
+                    const item = weaponsInHand[i];
+                    if (item.selected) {
+                        this.health -= item.damage;
+                        item.element.click();
                     }
                 }
                 this.checkState();
                 this.element.innerHTML = this.generateCard();
+                this.element.style.boxShadow = "";
             }
         })
     }

@@ -16,9 +16,9 @@ divPLACEMENT.appendChild(manoJohn.element);
 let goblin = new CardEnemy(enemyList[1].name, enemyList[1].damage, enemyList[1].health, enemyList[1].image, enemyList[1].ability);
 divPLACEMENT.appendChild(goblin.element);
 
-let arma = new CardWeapon(weaponsList[0].name, weaponsList[0].damage, weaponsList[0].health, weaponsList[0].image, weaponsList[0].ability);
+let arma = new CardWeapon(weaponsList[0].name, weaponsList[0].damage, weaponsList[0].health, weaponsList[0].image, weaponsList[0].ability, weaponsList[0].type);
 divWEAPONS.appendChild(arma.element);
 weaponsInHand.push(arma);
-let arma2 = new CardWeapon(weaponsList[0].name, weaponsList[0].damage, weaponsList[0].health, weaponsList[0].image, weaponsList[0].ability);
+let arma2 = new CardWeapon(weaponsList[1].name, weaponsList[1].damage, weaponsList[1].health, weaponsList[1].image, weaponsList[1].ability, weaponsList[1].type);
 divWEAPONS.appendChild(arma2.element);
 weaponsInHand.push(arma2);
