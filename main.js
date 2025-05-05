@@ -22,4 +22,3 @@ weaponsInHand.push(arma);
 let arma2 = new CardWeapon(weaponsList[0].name, weaponsList[0].damage, weaponsList[0].health, weaponsList[0].image, weaponsList[0].ability);
 divWEAPONS.appendChild(arma2.element);
 weaponsInHand.push(arma2);
-console.log(weaponsInHand);
