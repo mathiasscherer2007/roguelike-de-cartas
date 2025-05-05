@@ -1,3 +1,7 @@
+let isCardSelected = false;
+let weaponsInHand = [];
+let enemiesInField = [];
+
 class Card{
     constructor(name, damage, health, image, ability){
         this.name = name;
@@ -24,8 +28,6 @@ class Card{
     }
 }
 
-let isCardSelected = false;
-
 class CardWeapon extends Card{
     constructor(name, damage, health, image, type){
         super(name, damage, health, image, type);
@@ -49,9 +51,10 @@ class CardWeapon extends Card{
 }
 
 class CardEnemy extends Card{
-    constructor(name, damage, health, image, ability){
+    constructor(name, damage, health, image, ability, pos){
         super(name, damage, health, image, ability);
         this.element.classList.add("cardEnemy");
+        this.pos = enemiesInField.length;
 
         this.element.addEventListener("mouseenter", () => {
             if (isCardSelected) {
@@ -63,7 +66,28 @@ class CardEnemy extends Card{
                 this.element.style.boxShadow = "";
             }
         })
+        this.element.addEventListener("click", () => {
+            if (isCardSelected) {
+                for (let i = 0; i < weaponsInHand.length; i++) {
+                    const element = weaponsInHand[i];
+                    if (element.selected) {
+                        this.health -= element.damage;
+                    }
+                }
+                this.checkState();
+                this.element.innerHTML = this.generateCard();
+            }
+        })
+    }
+
+    checkState(){
+        if (this.health <= 0) {
+            enemiesInField.splice(this.pos, 1);
+            this.element.remove();
+        } else {
+            // pass
+        }
     }
 }
 
-export {Card, CardWeapon, CardEnemy, isCardSelected};
+export {Card, CardWeapon, CardEnemy, isCardSelected, weaponsInHand, enemiesInField};
