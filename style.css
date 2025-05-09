@@ -229,4 +229,32 @@ html, body, .container{
     100% { transform: translate(0px, -3px) rotate(0deg);    }
 }
 
+@keyframes lightFlinch {
+    0%   { transform: rotate(0deg); }
+    40%  { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg);}
+}
+.lightFlinch{
+    animation: lightFlinch 0.05s ease-out;
+}
+
+@keyframes mediumFlinch {
+    0%   { transform: rotate(0deg); }
+    40%  { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg);}
+}
+.mediumFlinch {
+    animation: mediumFlinch 0.07s ease-out;
+}
+
+@keyframes heavyFlinch {
+    0%   { transform: rotate(0deg)  translate(0px, -1px); }
+    30%  { transform: rotate(-8deg) translate(0px, 2px);}
+    80%  { transform: rotate(1deg)  translate(1px, 0px); }
+    100% { transform: rotate(0deg)  translate(-2px, 0px); }
+}
+.heavyFlinch {
+    animation: heavyFlinch 0.08s ease-out;
+}
+
 /* fr = France 🇫🇷 💪 */

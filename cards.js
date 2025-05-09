@@ -54,6 +54,7 @@ class CardWeapon extends Card{
 class CardEnemy extends Card{
     constructor(name, damage, health, image, ability, pos){
         super(name, damage, health, image, ability);
+        this.maxHealth = this.health;
         this.element.classList.add("cardEnemy");
         this.pos = enemiesInField.length;
 
@@ -72,6 +73,17 @@ class CardEnemy extends Card{
                 for (let i = 0; i < weaponsInHand.length; i++) {
                     const item = weaponsInHand[i];
                     if (item.selected) {
+                        if (this.maxHealth > item.damage) {
+                            if (item.damage * 100 / this.maxHealth <= 20){
+                                this.element.classList.add("lightFlinch");
+                            } else if (item.damage * 100 / this.maxHealth <= 60){
+                                this.element.classList.add("mediumFlinch");
+                            } else {
+                                this.element.classList.add("heavyFlinch");
+                            }
+                        } else {
+                            //pass
+                        }
                         this.health -= item.damage;
                         item.element.click();
                     }
@@ -80,6 +92,9 @@ class CardEnemy extends Card{
                 this.element.innerHTML = this.generateCard();
                 this.element.style.boxShadow = "";
             }
+        })
+        this.element.addEventListener("animationend", (event) => {
+            this.element.classList.remove(event.animationName);
         })
     }
 
