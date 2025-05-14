@@ -26,6 +26,11 @@ class Card{
             </div>
         `
     }
+
+    animationRandomizer(animationList){
+        const SIZE = animationList.length;
+        
+    }
 }
 
 class CardWeapon extends Card{
