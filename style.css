@@ -136,7 +136,7 @@ html, body, .container{
     background-color: var(--bgColor1);
     border: var(--stdBorder);
     border-radius: 10px;
-    text-shadow: 0 0 10px var(--bgColor1);
+    transition: background-color 0.2s ease;
 }
 
 .cardName{
@@ -147,6 +147,7 @@ html, body, .container{
     padding: 2px;
     border-bottom: var(--stdBorder);
     font-size: 1.1em;
+    min-height: 1.3em;
 }
 
 .cardImage{
@@ -205,7 +206,7 @@ html, body, .container{
 
 /*Enemy*/
 .cardEnemy{
-    transition: box-shadow 0.2s ease, background-color 0.2s ease, font-size 0.1s ease, background-image 0.2s ease;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease, font-size 0.1s ease, background-image 0.2s ease, ;
 }
 
 /* Weapons */
@@ -214,7 +215,7 @@ html, body, .container{
     will-change: transform;
 }
 
-.cardWeapon:hover{
+.cardWeaponHover{
     transform: translate(0px, -3px);
     box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.5);
 }

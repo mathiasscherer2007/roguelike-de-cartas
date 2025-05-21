@@ -40,6 +40,14 @@ class CardWeapon extends Card{
         this.selected = false;
         this.element.classList.add("cardWeapon");
 
+        this.element.addEventListener("mouseenter", () => {
+            this.element.classList.add("cardWeaponHover");
+        })
+
+        this.element.addEventListener("mouseleave", () => {
+            this.element.classList.remove("cardWeaponHover");
+        })
+
         this.element.addEventListener("click", () => {
             if (this.selected){
                 this.selected = false;
@@ -48,8 +56,14 @@ class CardWeapon extends Card{
             } else {
                 for (let i = 0; i < weaponsInHand.length; i++) {
                     const weapon = weaponsInHand[i];
-                    weapon.selected = false;
-                    weapon.element.classList.remove("cardWeaponSelected");
+                    if (weapon.selected) {
+                        weapon.selected = false;
+                        weapon.element.classList.remove("cardWeaponSelected");
+                        weapon.element.classList.add("cardWeaponHover");
+                        setTimeout(() => {
+                            weapon.element.classList.remove("cardWeaponHover");
+                        }, 120);
+                    }
                 }
                 this.selected = true;
                 isCardSelected = true;
@@ -101,11 +115,12 @@ class CardEnemy extends Card{
             this.image = "";
             this.health = 0;
             this.element.style.backgroundColor = "rgba(25, 25, 20, 1)";
+            this.name = "";
             this.generateCard();
             console.log(this.element)
             setTimeout(() => {
                 this.element.classList.add("death");
-            }, 150);
+            }, 100);
         } else {
             this.element.addEventListener("animationend", this.animationHandlerDamage)
 
