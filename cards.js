@@ -46,11 +46,14 @@ class CardWeapon extends Card{
                 isCardSelected = false;
                 this.element.classList.remove("cardWeaponSelected");
             } else {
-                if (!isCardSelected){
-                    this.selected = true;
-                    isCardSelected = true;
-                    this.element.classList.add("cardWeaponSelected");
+                for (let i = 0; i < weaponsInHand.length; i++) {
+                    const weapon = weaponsInHand[i];
+                    weapon.selected = false;
+                    weapon.element.classList.remove("cardWeaponSelected");
                 }
+                this.selected = true;
+                isCardSelected = true;
+                this.element.classList.add("cardWeaponSelected");
             }
         })
     }
@@ -102,7 +105,7 @@ class CardEnemy extends Card{
             console.log(this.element)
             setTimeout(() => {
                 this.element.classList.add("death");
-            }, 50);
+            }, 150);
         } else {
             this.element.addEventListener("animationend", this.animationHandlerDamage)
 
