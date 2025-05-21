@@ -63,6 +63,9 @@ class CardEnemy extends Card{
         this.element.classList.add("cardEnemy");
         this.pos = enemiesInField.length;
 
+        this.animationHandlerDeath = this.animationHandlerDeath.bind(this);
+        this.animationHandlerDamage = this.animationHandlerDamage.bind(this);
+
         this.element.addEventListener("mouseenter", () => {
             if (isCardSelected) {
                 this.element.style.boxShadow = "0 0 10px rgb(255, 0, 0)";
@@ -78,38 +81,53 @@ class CardEnemy extends Card{
                 for (let i = 0; i < weaponsInHand.length; i++) {
                     const item = weaponsInHand[i];
                     if (item.selected) {
-                        if (this.maxHealth > item.damage) {
-                            if (item.damage * 100 / this.maxHealth <= 20){
-                                this.element.classList.add("lightFlinch");
-                            } else if (item.damage * 100 / this.maxHealth <= 60){
-                                this.element.classList.add("mediumFlinch");
-                            } else {
-                                this.element.classList.add("heavyFlinch");
-                            }
-                        } else {
-                            //pass
-                        }
                         this.health -= item.damage;
                         item.element.click();
+                        this.checkState(item);
                     }
                 }
-                this.checkState();
                 this.element.innerHTML = this.generateCard();
                 this.element.style.boxShadow = "";
             }
         })
-        this.element.addEventListener("animationend", (event) => {
-            this.element.classList.remove(event.animationName);
-        })
     }
 
-    checkState(){
+    checkState(item){
         if (this.health <= 0) {
-            enemiesInField.splice(this.pos, 1);
-            this.element.remove();
+            this.element.addEventListener("animationend", this.animationHandlerDeath)
+            this.image = "";
+            this.health = 0;
+            this.element.style.backgroundColor = "rgba(25, 25, 20, 1)";
+            this.generateCard();
+            console.log(this.element)
+            setTimeout(() => {
+                this.element.classList.add("death");
+            }, 50);
         } else {
-            // pass
+            this.element.addEventListener("animationend", this.animationHandlerDamage)
+
+            if (this.maxHealth > item.damage) {
+                if (item.damage * 100 / this.maxHealth <= 20){
+                    this.element.classList.add("lightFlinch");
+                } else if (item.damage * 100 / this.maxHealth <= 60){
+                    this.element.classList.add("mediumFlinch");
+                } else {
+                    this.element.classList.add("heavyFlinch");
+                }
+            } else {
+                //pass
+            }
+            this.element.removeEventListener("animationend", this.animationHandlerDamage);
         }
+    }
+
+    animationHandlerDeath(event){
+        enemiesInField.splice(this.pos, 1);
+        this.element.remove();
+    }
+
+    animationHandlerDamage(event){
+        this.element.classList.remove(event.animationName);
     }
 }
 

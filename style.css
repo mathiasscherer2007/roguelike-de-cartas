@@ -201,7 +201,7 @@ html, body, .container{
 
 /*Enemy*/
 .cardEnemy{
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease, font-size 0.1s ease, background-image 0.2s ease;
 }
 
 /* Weapons */
@@ -249,12 +249,22 @@ html, body, .container{
 
 @keyframes heavyFlinch {
     0%   { transform: rotate(0deg)  translate(0px, -1px); }
-    30%  { transform: rotate(-8deg) translate(0px, 2px);}
+    30%  { transform: rotate(-5deg) translate(0px, 2px);}
     80%  { transform: rotate(1deg)  translate(1px, 0px); }
     100% { transform: rotate(0deg)  translate(-2px, 0px); }
 }
 .heavyFlinch {
     animation: heavyFlinch 0.08s ease-out;
+}
+
+@keyframes death{
+    10%  {height: 100%;}
+    100% {height: 0;}
+}
+.death{
+    background-image: none;
+    font-size: 0;
+    animation: death 0.3s ease-out;
 }
 
 /* fr = France 🇫🇷 💪 */
