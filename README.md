@@ -1,6 +1,7 @@
-# Roguelike de Cartas
-Um jogo "roguelike" feito puramente com HTML, CSS e Javascript.
-Ele ainda não tem um nome, afinal, nem funciona, mas no futuro talvez tenha (e talvez funcione também kkkk).
-A proposta principal é o player utilizar armas e sinergias para matar os inimigos. Quando morre, volta pro começo.
+# Rouguelike Card Game
 
-Artes feitas pelo Seu Lui aka. SyphBoo
+Rouguelike card game made purely with HTML, CSS and JS.
+
+Maybe some day it'll have a name.
+
+All pieces of art and drawings were made by the most excellent @amurakiatsu (on twitter)
