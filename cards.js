@@ -28,7 +28,7 @@ class Card{
     }
 
     animationRandomizer(animationList){
-        const SIZE = animationList.length;
+        // TODO - FAZER A FUNÇÃO FUNCIONAR
         
     }
 }

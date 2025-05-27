@@ -137,7 +137,7 @@ html, body, .container{
     border: var(--stdBorder);
     border-radius: 10px;
     transition: background-color 0.2s ease;
-    text-shadow: 0 0 5px var(--bgColor1);
+    text-shadow: 0 0 5px var(--bgColor1), 0 0 5px var(--bgColor1);
 }
 
 .cardName{
