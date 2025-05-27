@@ -2,7 +2,7 @@ class Enemy{
     static counter = 0;
 
     constructor(name, damage, health, image, ability, type, isBoss){
-        this.id = Enemy.counter;                                  // Enemy's ID, similar to an autoincrement value, I guess?
+        this.id = Enemy.counter;                            // Enemy's ID, similar to an autoincrement value, I guess?
         this.name = name;                                   // Enemy's name, displayed on top of the card.
         this.damage = damage;                               // Enemy's base damage.
         this.health = health;                               // Enemy's base health.
