@@ -1,45 +1,38 @@
 class Enemy{
-    constructor(id, name, damage, health, image, ability){
-        this.id = id;
-        this.name = name;
-        this.damage = damage;
-        this.health = health;
-        this.image = image;
-        this.ability = ability === "" ? "none" : ability;
+    static counter = 0;
+
+    constructor(name, damage, health, image, ability, type, isBoss){
+        this.id = Enemy.counter;                                  // Enemy's ID, similar to an autoincrement value, I guess?
+        this.name = name;                                   // Enemy's name, displayed on top of the card.
+        this.damage = damage;                               // Enemy's base damage.
+        this.health = health;                               // Enemy's base health.
+        this.image = image;                                 // Enemy's image.
+        this.ability = ability === "" ? "none" : ability;   // Enemy's ability, if they one.
+        this.type = type;                                   // Enemy's type. Check dictionary bellow for more info.
+        this.isBoss = isBoss;                               // Wether the enemy is a boss or not. Bosses are treated differently.
+
+        Enemy.counter++;
     }
 }
 
-const garcia = new Enemy(1, "Hermano Pera", 3, 5, "Images/Enemies/pera.png", "");
-const goblin = new Enemy(2, "Goblin", 1, 1, "Images/Enemies/goblin.png", "");
-
 /*
 
-    Enemies are separated by type as well,
-    but this separation occurs in the list itself.
+    Enemy type dictionary:
 
     index 0 = goblin;
     index 1 = human;
     index 2 = animal;
     index 3 = demon;
     index 4 = misc;
-    index 5 = everyone;
 
-    Inside these lists, index 0 represents a list of bosses.
-    Stupid ass way of organizing this,
-    but whatever, maybe some day I'll change it.
-
-    enemyList = [type1[[boss, boss], enemy1, enemy2], 
-                 type2[[boss, boss], enemy1, enemy2], 
-                 type3[[boss, boss], enemy1, enemy2]]
-
+    Maybe there'll be more in the future.
+    Depends wether Mr. Paxota will want to draw more for me.
 */
 
-const enemyList =  [[[], goblin],
-                    [[], ],
-                    [[], ],
-                    [[], ],
-                    [[], garcia],
-                    [[], goblin, garcia]];
+const garcia = new Enemy("Hermano Pera", 3, 5, "Images/Enemies/pera.png", "", 4, false);
+const goblin = new Enemy("Goblin", 1, 1, "Images/Enemies/goblin.png", "", 0, false);
+const blackKnight = new Enemy("Black Knight", 5, 10, "Images/Enemies/black_knight.png", "", 1, true);
 
+const enemyList =  [goblin, garcia, blackKnight]
 
 export {enemyList};

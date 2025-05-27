@@ -137,6 +137,7 @@ html, body, .container{
     border: var(--stdBorder);
     border-radius: 10px;
     transition: background-color 0.2s ease;
+    text-shadow: 0 0 5px var(--bgColor1);
 }
 
 .cardName{
@@ -270,6 +271,25 @@ html, body, .container{
     background-image: none;
     font-size: 0;
     animation: death 0.3s ease-out;
+}
+
+.lightDamage{
+    background-image: url(Images/Misc/light_fissure.png);
+    background-position: center;
+    background-size: cover;
+    transition: background-image 0.1s linear;
+}
+.mediumDamage{
+    background-image: url(Images/Misc/medium_fissure.png);
+    background-position: center;
+    background-size: cover;
+    transition: background-image 0.1s linear;
+}
+.heavyDamage{
+    background-image: url(Images/Misc/heavy_fissure.png);
+    background-position: center;
+    background-size: cover;
+    transition: background-image 0.1s linear;
 }
 
 /* fr = France 🇫🇷 💪 */

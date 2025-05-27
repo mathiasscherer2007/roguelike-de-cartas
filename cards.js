@@ -74,7 +74,7 @@ class CardWeapon extends Card{
 }
 
 class CardEnemy extends Card{
-    constructor(name, damage, health, image, ability, pos){
+    constructor(name, damage, health, image, ability){
         super(name, damage, health, image, ability);
         this.maxHealth = this.health;
         this.element.classList.add("cardEnemy");
@@ -111,31 +111,37 @@ class CardEnemy extends Card{
 
     checkState(item){
         if (this.health <= 0) {
-            this.element.addEventListener("animationend", this.animationHandlerDeath)
+            this.element.removeEventListener("animationend", this.animationHandlerDamage);
+            this.element.addEventListener("animationend", this.animationHandlerDeath);
+            this.element.classList.add("heavyDamage");
+            this.element.style.textShadow = "none";
             this.image = "";
             this.health = 0;
             this.element.style.backgroundColor = "rgba(25, 25, 20, 1)";
             this.name = "";
             this.generateCard();
-            console.log(this.element)
             setTimeout(() => {
                 this.element.classList.add("death");
             }, 100);
         } else {
             this.element.addEventListener("animationend", this.animationHandlerDamage)
-
-            if (this.maxHealth > item.damage) {
-                if (item.damage * 100 / this.maxHealth <= 20){
-                    this.element.classList.add("lightFlinch");
-                } else if (item.damage * 100 / this.maxHealth <= 60){
-                    this.element.classList.add("mediumFlinch");
-                } else {
-                    this.element.classList.add("heavyFlinch");
-                }
+            // bloc of code for the animation
+            if (item.damage * 100 / this.maxHealth <= 20) {
+                this.element.classList.add("lightFlinch");
+            } else if (item.damage * 100 / this.maxHealth <= 60) {
+                this.element.classList.add("mediumFlinch");
             } else {
-                //pass
+                this.element.classList.add("heavyFlinch");
             }
-            this.element.removeEventListener("animationend", this.animationHandlerDamage);
+
+            // bloc of code for the fissure image to be applied
+            if (this.health * 100 / this.maxHealth <= 10) {
+                this.element.classList.add("heavyDamage");
+            } else if (this.health * 100 / this.maxHealth <= 40) {
+                this.element.classList.add("mediumDamage");
+            } else if (this.health * 100 / this.maxHealth <= 80) {
+                this.element.classList.add("lightDamage");
+            }
         }
     }
 
@@ -145,6 +151,7 @@ class CardEnemy extends Card{
     }
 
     animationHandlerDamage(event){
+        console.log(event.animationName)
         this.element.classList.remove(event.animationName);
     }
 }
